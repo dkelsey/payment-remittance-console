@@ -13,12 +13,12 @@ add_action('admin_menu', 'mt_add_pages');
 // action function for above hook
 function mt_add_pages() {
     // Add a new top-level menu (ill-advised):
-    add_menu_page(__('Batch & Remittance Reports','menu-test'), __('Batch & Remittance Reports','menu-test'), 'manage_options', 'mt-top-level-handle', 'mt_toplevel_page' );
+    add_menu_page(__('Batch & Remittance Reports','menu-test'), __('Batch & Remittance Reports','menu-test'), 'manage_options', 'batch-remittance-console', 'batch_remittance_console_page' );
 }
 
 
 // mt_toplevel_page() displays the page content for the custom Test Toplevel menu
-function mt_toplevel_page() {
+function batch_remittance_console_page() {
     echo <<<EOT
     <div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -114,17 +114,4 @@ function mt_toplevel_page() {
       <script src="js/bvb-console.js"></script>
 EOT;
 }
-
-// mt_sublevel_page() displays the page content for the first submenu
-// of the custom Test Toplevel menu
-function mt_sublevel_page() {
-    echo "<h2>" . __( 'Test Sublevel', 'menu-test' ) . "</h2>";
-}
-
-// mt_sublevel_page2() displays the page content for the second submenu
-// of the custom Test Toplevel menu
-function mt_sublevel_page2() {
-    echo "<h2>" . __( 'Test Sublevel2', 'menu-test' ) . "</h2>";
-}
-
 ?>
