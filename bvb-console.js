@@ -1,5 +1,5 @@
       $(function() {
-      $.getJSON("http://localhost/wp-json/uploads", function(data){
+      $.getJSON("https://localhost/wp-json/uploads", function(data){
         $.each( data, function( key, val ) {
            $.each(val, function(key, val) {
            $("#upload_tbody")
@@ -18,7 +18,7 @@
            });
         });
      });
-      $.getJSON("http://localhost/wp-json/archives", function(data){
+      $.getJSON("https://localhost/wp-json/archives", function(data){
         $.each( data, function( key, val ) {
            $.each(val, function(key, val) {
 	   var zip_btn_text = 'zip';
@@ -52,7 +52,7 @@
                div.text('testing file on server').fadeOut(3000, function() {
                   $(this).text('').show();
                });
-               $.getJSON('http://localhost/wp-json/uploads/test/' + fname.html(), function(data){
+               $.getJSON('https://localhost/wp-json/uploads/test/' + fname.html(), function(data){
                   $.each( data, function(key,val){
                   alert(val);
                   });
@@ -66,7 +66,7 @@
                div.text('the file is being processed').fadeOut(3000, function() {
                   $(this).text('').show();
                });
-               $.getJSON('http://localhost/wp-json/uploads/process/' + fname.html(), function(data){
+               $.getJSON('https://localhost/wp-json/uploads/process/' + fname.html(), function(data){
                   $.each( data, function(key,val){
 	   	       newrow = div.parent().clone();
 		       $("#archives_tbody").append(newrow);
@@ -84,10 +84,10 @@
 	       tbody = tr.parent();
 	       div = tr.find('td:eq(3)');
 	       fname = tr.find('td:eq(0)');
-               var serverUrl = 'http://localhost/wp-json/uploads/' + fname.html();
+               var serverUrl = 'https://localhost/wp-json/uploads/' + fname.html();
 
 	       if ( tbody[0] == arch_tbody[0] ) 
-                    serverUrl = 'http://localhost/wp-json/archives/' + fname.html();
+                    serverUrl = 'https://localhost/wp-json/archives/' + fname.html();
                div.stop(true,true);
                div.text('').show();
                div.text( fname.html() + ' is being Deleted').fadeOut(3000, function() {
@@ -125,7 +125,7 @@
                div.text(divtext).fadeOut(3000, function() {
                   $(this).text('').show();
                });
-	       var serverUrl = 'http://localhost/wp-json/archives/zip/' + fname.html();
+	       var serverUrl = 'https://localhost/wp-json/archives/zip/' + fname.html();
 
                $.ajax({
                   type: "PUT",
@@ -147,7 +147,7 @@
 
 		    $.ajax({
 		       type: "GET",
-		       url: 'http://localhost/wp-json/archives/' + fname.html(),
+		       url: 'https://localhost/wp-json/archives/' + fname.html(),
 		       processDate: false,
 		       contentType: false,
 		       success: function(data) {
@@ -177,7 +177,7 @@
                div.text('Un-Archiveing').fadeOut(3000, function() {
                   $(this).text('').show();
                });
-	       var serverUrl = 'http://localhost/wp-json/archives/unarchive/' + fname.html();
+	       var serverUrl = 'https://localhost/wp-json/archives/unarchive/' + fname.html();
 
                $.ajax({
                   type: "PUT",
@@ -218,7 +218,7 @@
 
          // This function is called when the user clicks on Upload to Parse. It will create the REST API request to upload this image to Parse.
          $('#uploadbutton').click(function() {
-           var serverUrl = 'http://localhost/wp-json/uploads';
+           var serverUrl = 'https://localhost/wp-json/uploads';
 
            $.ajax({
              type: "POST",
@@ -231,7 +231,7 @@
 	       // find the uploads_tbody
                $.ajax({
 	            type: "GET",
-		    url: 'http://localhost/wp-json/uploads/' + file.name,
+		    url: 'https://localhost/wp-json/uploads/' + file.name,
 		    processData: false,
 		    contentType: false,
 		    success: function(data) {
